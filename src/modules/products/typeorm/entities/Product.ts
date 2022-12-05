@@ -7,7 +7,7 @@ export default class Product{
     @Column()
     name:string;
     @Column('decimal')
-    price:string;
+    price:number;
     @Column('int')
     quantity:number;
     @CreateDateColumn()
