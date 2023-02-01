@@ -6,4 +6,4 @@ export default class AppError{
         this.messege=message;
         this.statusCode = statusCode;
     }
-}
+};

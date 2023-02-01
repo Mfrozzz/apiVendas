@@ -2,11 +2,12 @@ import { celebrate, Segments } from "celebrate";
 import { Router } from "express";
 import Joi from "joi";
 import UserController from "../controllers/UsersController";
+import isAuthenticated from "../../../shared/http/middlewares/isAuthenticated";
 
 const userRouter = Router();
 const usersController = new UserController()
 
-userRouter.get('/');
+userRouter.get('/', isAuthenticated,usersController.index);
 userRouter.post('/',celebrate({
     [Segments.BODY]:{
         name:Joi.string().required(),
