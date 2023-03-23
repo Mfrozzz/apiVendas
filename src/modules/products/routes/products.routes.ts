@@ -16,14 +16,14 @@ productRouter.post('/',celebrate({
         quantity:Joi.number().required()
     }
 }),productsController.create);
-productRouter.put('/:id',celebrate({
-    [Segments.BODY]:{
-        id:Joi.string().required(),
-        name:Joi.string().required(),
-        price:Joi.number().precision(2).required(),
-        quantity:Joi.number().required()
-    }
-}),productsController.update);
+productRouter.put('/:id', celebrate({
+    [Segments.PARAMS] : {id: Joi.string().uuid().required()},
+    [Segments.BODY]: {
+        name: Joi.string().required(),
+        price: Joi.number().precision(2).required(),
+        quantity: Joi.number().required()
+       } 
+}), productsController.update);
 productRouter.delete('/:id',celebrate({
     [Segments.PARAMS]:{id:Joi.string().uuid().required()}
 }),productsController.delete);
